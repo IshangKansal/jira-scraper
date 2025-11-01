@@ -1,37 +1,3 @@
-# import json
-# from pathlib import Path
-# from scraper.parser import parse_issue
-
-# RAW_DIR = Path("data/raw")
-# SHARD_DIR = Path("data/processed/shards")
-# SHARD_DIR.mkdir(parents=True, exist_ok=True)
-
-# SHARD_SIZE = 5000  # one shard per 5000 issues
-
-# def convert():
-#     shard_index = 0
-#     count = 0
-#     outfile = None
-
-#     for raw_file in RAW_DIR.glob("*.json"):
-#         if count % SHARD_SIZE == 0:
-#             if outfile:
-#                 outfile.close()
-#             shard_index += 1
-#             outfile = SHARD_DIR / f"issues_{shard_index:05d}.jsonl"
-#             outfile = outfile.open("w")
-
-#         data = json.loads(raw_file.read_text())
-#         cleaned = parse_issue(data)
-#         outfile.write(json.dumps(cleaned) + "\n")
-#         count += 1
-
-#     if outfile:
-#         outfile.close()
-
-# if __name__ == "__main__":
-#     convert()
-
 import json
 import os
 from scraper.parser import parse_issue
